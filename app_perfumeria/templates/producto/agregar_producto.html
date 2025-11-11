@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %}Agregar Producto{% endblock %}
+{% block content %}
+<h3>Agregar Producto</h3>
+<form method="post">
+  {% csrf_token %}
+  <div class="mb-3">
+    <label>Nombre</label>
+    <input class="form-control" name="nombre" required>
+  </div>
+  <div class="mb-3">
+    <label>Descripción</label>
+    <textarea class="form-control" name="descripcion" rows="3"></textarea>
+  </div>
+  <div class="row">
+    <div class="col-md-4 mb-3">
+      <label>Precio</label>
+      <input type="number" step="0.01" class="form-control" name="precio">
+    </div>
+    <div class="col-md-4 mb-3">
+      <label>Stock</label>
+      <input type="number" class="form-control" name="stock">
+    </div>
+    <div class="col-md-4 mb-3">
+      <label>Categoría</label>
+      <input class="form-control" name="categoria">
+    </div>
+  </div>
+  <div class="mb-3">
+    <label>SKU</label>
+    <input class="form-control" name="sku">
+  </div>
+  <button class="btn btn-primary">Guardar</button>
+  <a href="{% url 'ver_producto' %}" class="btn btn-secondary">Volver</a>
+</form>
+{% endblock %}

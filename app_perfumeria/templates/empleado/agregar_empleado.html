@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block content %}
+<h3>Agregar Empleado</h3>
+<form method="post">
+  {% csrf_token %}
+  <div class="mb-3">
+    <label>Nombre</label>
+    <input class="form-control" name="nombre" required>
+  </div>
+  <div class="mb-3">
+    <label>Apellido</label>
+    <input class="form-control" name="apellido" required>
+  </div>
+  <div class="mb-3">
+    <label>Fecha Nacimiento</label>
+    <input type="date" class="form-control" name="fecha_nacimiento">
+  </div>
+  <div class="mb-3">
+    <label>Puesto</label>
+    <input class="form-control" name="puesto">
+  </div>
+  <div class="mb-3">
+    <label>Teléfono</label>
+    <input class="form-control" name="telefono">
+  </div>
+  <div class="mb-3">
+    <label>Email</label>
+    <input type="email" class="form-control" name="email">
+  </div>
+  <div class="mb-3">
+    <label>Fecha Contratación</label>
+    <input type="date" class="form-control" name="fecha_contratacion">
+  </div>
+  <button class="btn btn-primary">Guardar</button>
+  <a href="{% url 'ver_empleado' %}" class="btn btn-secondary">Volver</a>
+</form>
+{% endblock %}

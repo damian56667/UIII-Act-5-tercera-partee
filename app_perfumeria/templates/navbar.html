@@ -1,0 +1,54 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="{% url 'inicio_perfumeria' %}">
+        <i class="bi bi-bag-heart-fill me-2" style="font-size:1.2rem;color:var(--morado)"></i>
+        <span style="font-weight:700;color:var(--morado)">Sistema de Administración perfumeria</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="{% url 'inicio_perfumeria' %}"><i class="bi bi-house-door-fill"></i> Inicio</a></li>
+  
+          <!-- Empleado -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+              <i class="bi bi-people-fill"></i> Empleado
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="{% url 'agregar_empleado' %}">Agregar empleado</a></li>
+              <li><a class="dropdown-item" href="{% url 'ver_empleado' %}">Ver empleado</a></li>
+              <!-- actualizar y borrar se acceden desde la tabla -->
+            </ul>
+          </li>
+  
+ <!-- Producto -->
+<li class="nav-item dropdown">
+  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+    <i class="bi bi-box-seam"></i> Producto
+  </a>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="{% url 'agregar_producto' %}">Agregar producto</a></li>
+    <li><a class="dropdown-item" href="{% url 'ver_producto' %}">Ver producto</a></li>
+    <li><a class="dropdown-item" href="{% url 'ver_producto' %}#">Actualizar producto (desde lista)</a></li>
+    <li><a class="dropdown-item" href="{% url 'ver_producto' %}#">Borrar producto (desde lista)</a></li>
+  </ul>
+</li>
+          <!-- Clientes -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+              <i class="bi bi-people-fill"></i> Clientes
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="{% url 'agregar_cliente' %}">Agregar cliente</a></li>
+              <li><a class="dropdown-item" href="{% url 'ver_cliente' %}">Ver clientes</a></li>
+              <li><a class="dropdown-item" href="{% url 'ver_cliente' %}#">Actualizar cliente (desde lista)</a></li>
+              <li><a class="dropdown-item" href="{% url 'ver_cliente' %}#">Borrar cliente (desde lista)</a></li>
+            </ul>
+          </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>

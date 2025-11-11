@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block title %}Actualizar Cliente{% endblock %}
+{% block content %}
+<h3>Actualizar Cliente</h3>
+<form method="post" action="{% url 'realizar_actualizacion_cliente' cliente.id %}">
+  {% csrf_token %}
+  <div class="mb-3"><label>Nombre</label><input class="form-control" name="nombre" value="{{ cliente.nombre }}"></div>
+  <div class="mb-3"><label>Apellido</label><input class="form-control" name="apellido" value="{{ cliente.apellido }}"></div>
+  <div class="mb-3"><label>Teléfono</label><input class="form-control" name="telefono" value="{{ cliente.telefono }}"></div>
+  <div class="mb-3"><label>Email</label><input type="email" class="form-control" name="email" value="{{ cliente.email }}"></div>
+  <div class="mb-3"><label>Dirección</label><input class="form-control" name="direccion" value="{{ cliente.direccion }}"></div>
+  <div class="mb-3"><label>Ciudad</label><input class="form-control" name="ciudad" value="{{ cliente.ciudad }}"></div>
+
+  <div class="mb-3">
+    <label>Empleado (asignar)</label>
+    <select name="empleado" class="form-select">
+      <option value="">-- Ninguno --</option>
+      {% for e in empleados %}
+        <option value="{{ e.id }}" {% if cliente.empleado and cliente.empleado.id == e.id %}selected{% endif %}>{{ e.nombre }} {{ e.apellido }}</option>
+      {% endfor %}
+    </select>
+  </div>
+
+  <div class="mb-3">
+    <label>Producto (asignar)</label>
+    <select name="producto" class="form-select">
+      <option value="">-- Ninguno --</option>
+      {% for p in productos %}
+        <option value="{{ p.id }}" {% if cliente.producto and cliente.producto.id == p.id %}selected{% endif %}>{{ p.nombre }}</option>
+      {% endfor %}
+    </select>
+  </div>
+
+  <div class="form-check mb-3">
+    <input type="checkbox" class="form-check-input" id="activo" name="activo" {% if cliente.activo %}checked{% endif %}>
+    <label class="form-check-label" for="activo">Activo</label>
+  </div>
+
+  <button class="btn btn-primary">Guardar cambios</button>
+  <a class="btn btn-secondary" href="{% url 'ver_cliente' %}">Cancelar</a>
+</form>
+{% endblock %}

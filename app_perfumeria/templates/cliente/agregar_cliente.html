@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block title %}Agregar Cliente{% endblock %}
+{% block content %}
+<h3>Agregar Cliente</h3>
+<form method="post">
+  {% csrf_token %}
+  <div class="mb-3">
+    <label>Nombre</label>
+    <input class="form-control" name="nombre" required>
+  </div>
+  <div class="mb-3">
+    <label>Apellido</label>
+    <input class="form-control" name="apellido" required>
+  </div>
+  <div class="mb-3">
+    <label>Teléfono</label>
+    <input class="form-control" name="telefono">
+  </div>
+  <div class="mb-3">
+    <label>Email</label>
+    <input type="email" class="form-control" name="email">
+  </div>
+  <div class="mb-3">
+    <label>Dirección</label>
+    <input class="form-control" name="direccion">
+  </div>
+  <div class="mb-3">
+    <label>Ciudad</label>
+    <input class="form-control" name="ciudad">
+  </div>
+
+  <div class="mb-3">
+    <label>Empleado (asignar)</label>
+    <select name="empleado" class="form-select">
+      <option value="">-- Ninguno --</option>
+      {% for e in empleados %}
+        <option value="{{ e.id }}">{{ e.nombre }} {{ e.apellido }}</option>
+      {% endfor %}
+    </select>
+  </div>
+
+  <div class="mb-3">
+    <label>Producto (asignar)</label>
+    <select name="producto" class="form-select">
+      <option value="">-- Ninguno --</option>
+      {% for p in productos %}
+        <option value="{{ p.id }}">{{ p.nombre }}</option>
+      {% endfor %}
+    </select>
+  </div>
+
+  <button class="btn btn-primary">Guardar</button>
+  <a href="{% url 'ver_cliente' %}" class="btn btn-secondary">Volver</a>
+</form>
+{% endblock %}
